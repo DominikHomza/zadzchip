@@ -9,7 +9,7 @@
     <RadioGroup
         android:id="@+id/radioGroup"
         android:layout_width="match_parent"
-        android:layout_height="169dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <RadioButton
@@ -51,9 +51,8 @@
             android:layout_height="wrap_content"
             android:text="Wędliny"
             android:textStyle="bold" />
-
         <com.google.android.material.chip.ChipGroup
-            android:id="@+id/deliMeatsCheckboxGroup"
+            android:id="@+id/MeatsCheckboxGroup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:singleSelection="false" />
