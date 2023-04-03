@@ -14,7 +14,7 @@
 
         <RadioButton
             android:id="@+id/addModeRadioButton"
-            android:layout_width="wrap_content"
+            android:layout_width="210dp"
             android:layout_height="wrap_content"
             android:checked="true"
             android:text="Tryb Dodawania" />
