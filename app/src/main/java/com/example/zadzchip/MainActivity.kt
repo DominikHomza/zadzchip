@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
                     checkbox.chipBackgroundColor =
                         resources.getColorStateList(R.color.white)
                 }
-                "Mięsa Delikatesowe" -> {
+                "Wędliny" -> {
                     checkbox.chipBackgroundColor =
                         resources.getColorStateList(R.color.white)
                 }
