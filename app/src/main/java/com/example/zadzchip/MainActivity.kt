@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             checkbox.isCheckable = true
             checkbox.tag = shoppingItems.entries.firstOrNull { it.value.contains(item) }?.key
 
-            // Ustawienie listenera na zmianę stanu checkboxa
+
             checkbox.setOnCheckedChangeListener { _, isChecked ->
                 if (isChecked) {
                     selectedItems.add(item)
@@ -56,23 +56,6 @@ class MainActivity : AppCompatActivity() {
                     selectedItems.remove(item)
                 }
             }
-
-            // Ustawienie koloru checkboxa
-            when (checkbox.tag) {
-                "Warzywa" -> {
-                    checkbox.chipBackgroundColor =
-                        resources.getColorStateList(R.color.white)
-                }
-                "Wędliny" -> {
-                    checkbox.chipBackgroundColor =
-                        resources.getColorStateList(R.color.white)
-                }
-                "Pieczywo" -> {
-                    checkbox.chipBackgroundColor = resources.getColorStateList(R.color.white)
-                }
-            }
-
-            // Dodanie checkboxa do odpowiedniej grupy
             when (checkbox.tag) {
                 "Warzywa" -> vegetablesCheckboxGroup.addView(checkbox)
                 "Wędliny" -> MeatsCheckboxGroup.addView(checkbox)
@@ -87,7 +70,7 @@ class MainActivity : AppCompatActivity() {
     private fun showAddMode() {
         val checkboxesLayout = findViewById<View>(R.id.checkboxesLayout)
         val chipsLayout = findViewById<View>(R.id.chipsLayout)
-        // Pokazanie checkboxów do dodawania produktów
+
         checkboxesLayout.visibility = View.VISIBLE
         chipsLayout.visibility = View.GONE
     }
@@ -96,15 +79,14 @@ class MainActivity : AppCompatActivity() {
     private fun showCheckOffMode() {
         val checkboxesLayout = findViewById<View>(R.id.checkboxesLayout)
         val chipsLayout = findViewById<View>(R.id.chipsLayout)
-        // Pokazanie chipsów do odznaczania produktów
         checkboxesLayout.visibility = View.GONE
         chipsLayout.visibility = View.VISIBLE
 
-        // Wyczyszczenie grupy chipsów
+
         val chipsGroup = findViewById<ChipGroup>(R.id.chipsGroup)
         chipsGroup.removeAllViews()
 
-        // Dodanie chipsów do grupy
+
         for ((groupName, items) in shoppingItems) {
             for (item in items) {
                 if (selectedItems.contains(item)) {
@@ -112,30 +94,13 @@ class MainActivity : AppCompatActivity() {
                     chip.text = item
                     chip.isCloseIconVisible = true
                     chip.tag = groupName
-
-                    // Ustawienie koloru chipsa
-                    when (groupName) {
-                        "Warzywa" -> {
-                            chip.chipBackgroundColor =
-                                resources.getColorStateList(R.color.white)
-                        }
-                        "Wędliny" -> {
-                            chip.chipBackgroundColor =
-                                resources.getColorStateList(R.color.white)
-                        }
-                        "Pieczywo" -> {
-                            chip.chipBackgroundColor =
-                                resources.getColorStateList(R.color.white)
-                        }
-                    }
-                    // Dodanie chipsa do grupy
                     chipsGroup.addView(chip)
 
-                    // Ustawienie listenera na kliknięcie ikony zamknięcia
                     chip.setOnCloseIconClickListener {
                         selectedItems.remove(item)
                         chipsGroup.removeView(chip)
                     }
+
                 }
             }
         }
