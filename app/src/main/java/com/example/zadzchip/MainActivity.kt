@@ -19,9 +19,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         shoppingItems = mapOf(
-            "Warzywa" to listOf("Marchewki", "Ziemniaki", "Brokuły", "Sałata", "Pomidor", "Cebula", "Papryka", "Ogórek", "Kalafior", "Kapusta"),
-            "Wędliny" to listOf("Szynka", "Salami", "Wędzony Szynka", "Indyk", "Kurczak", "Bekon", "Wędzony Boczek", "Wędzona Kiełbasa", "Wędzona Parówka", "Wędzona Karkówka"),
-            "Pieczywo" to listOf("Bułka", "Bagietka", "Chleb Pełnoziarnisty", "Chleb biały", "Chleb razowy", "Chleb pszenny", "Chleb żytni", "Bułka Paryska", "Bagietka Toskańska", "Chleb ze Słonecznikiem")
+            "Warzywa" to listOf("Marchewki", "Ziemniaki", "Brokuły", "Sałata"),
+            "Wędliny" to listOf("Szynka", "Salami","Bekon"),
+            "Pieczywo" to listOf("Bułka", "Bagietka", "Bułka Paryska", "Bagietka Toskańska",)
         )
 
         val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
@@ -54,6 +54,19 @@ class MainActivity : AppCompatActivity() {
                     selectedItems.add(item)
                 } else {
                     selectedItems.remove(item)
+                }
+            }
+            when (checkbox.tag) {
+                "Warzywa" -> {
+                    checkbox.chipBackgroundColor =
+                        resources.getColorStateList(R.color.vegetablesColor)
+                }
+                "Wędliny" -> {
+                    checkbox.chipBackgroundColor =
+                        resources.getColorStateList(R.color.MeatsColor)
+                }
+                "Pieczywo" -> {
+                    checkbox.chipBackgroundColor = resources.getColorStateList(R.color.breadColor)
                 }
             }
             when (checkbox.tag) {
@@ -95,6 +108,20 @@ class MainActivity : AppCompatActivity() {
                     chip.isCloseIconVisible = true
                     chip.tag = groupName
                     chipsGroup.addView(chip)
+                    when (groupName) {
+                        "Warzywa" -> {
+                            chip.chipBackgroundColor =
+                                resources.getColorStateList(R.color.vegetablesColor)
+                        }
+                        "Wędliny" -> {
+                            chip.chipBackgroundColor =
+                                resources.getColorStateList(R.color.MeatsColor)
+                        }
+                        "Pieczywo" -> {
+                            chip.chipBackgroundColor =
+                                resources.getColorStateList(R.color.breadColor)
+                        }
+                    }
 
                     chip.setOnCloseIconClickListener {
                         selectedItems.remove(item)
